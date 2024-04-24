@@ -14,14 +14,18 @@ function NavBar() {
 
     const [lightmode, setLightmode] = useState('on');
 
+    useEffect(() => { sessionStorage.setItem("mode", "light"); })
     const changeMode = () => {
         if (lightmode == "on") {
             setLightmode("off");
+            sessionStorage.setItem("mode", "dark");
         }
         else {
             setLightmode("on");
+            sessionStorage.setItem("mode", "light");
         }
     };
+
 
     return (<>
         <nav class="navbar navbar-expand-lg  shadow-sm navigation">

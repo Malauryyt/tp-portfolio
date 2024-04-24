@@ -1,6 +1,4 @@
 body {
-
-
     background-color: rgb(250, 242, 234);
 }
 
@@ -9,8 +7,49 @@ code {
         monospace;
 }
 
+.blocs {
+    margin-top: 60px !important;
+    padding-bottom: 60px !important;
+    border-bottom: solid 1px #B39188 !important;
+}
+
+.titre {
+
+    color: #B39188;
+    margin: 10px;
+}
+
+.paragraphe {
+    white-space: pre-line;
+    margin-top: 60px;
+}
+
+.listeGroup {
+    margin-top: 60px;
+    padding: 30px;
+    border-top-width: 30px;
+    border-top: solid 1px #FFAE9D;
+}
+
+.listeTitre {
+    color: #FFAE9D;
+}
+
+.cardPerso {
+    height: 600px !important;
+    width: 400px !important;
+}
+
+.stylePara {
+    border-left: solid 1px #FFAE9D;
+    padding-left: 10px;
+    white-space: pre-line;
+}
 
 
+/* #################################################################################################### 
+Navigation
+   #################################################################################################### */
 .nav a {
     color: rgb(57, 46, 44);
     font-size: larger;
@@ -19,4 +58,11 @@ code {
 .nav a:hover {
     color: rgb(57, 46, 44);
     text-decoration: underline;
+}
+
+/* #################################################################################################### 
+Page principale
+   #################################################################################################### */
+.imgProfil {
+    height: 600px;
 }
