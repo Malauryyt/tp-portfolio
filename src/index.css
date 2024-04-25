@@ -13,6 +13,7 @@ code {
 
 
 
+
 .blocs {
     margin-top: 60px !important;
     padding-bottom: 60px !important;
@@ -83,13 +84,14 @@ code {
     background-color: rgb(204, 174, 164) !important;
 }
 
+
 .cardPersoDark h5 {
     color: #FAF2EA;
 
 }
 
 .stylePara {
-    border-left: solid 1px #FFAE9D;
+    border-left: solid 1px #FAF2EA;
     padding-left: 10px;
     white-space: pre-line;
 }
@@ -109,6 +111,15 @@ code {
     color: #FAF2EA;
 }
 
+.animation {
+    transition-duration: 0.5s;
+
+}
+
+.animation:hover {
+    transform: scale(1, 1.1);
+}
+
 /* #################################################################################################### 
 Navigation
    #################################################################################################### */
@@ -120,6 +131,10 @@ Navigation
 .nav a:hover {
     color: rgb(57, 46, 44);
     text-decoration: underline;
+}
+
+.navigation {
+    background-color: #FAF2EA !important;
 }
 
 .navigationDark {
@@ -135,9 +150,40 @@ Navigation
     text-decoration: underline;
 }
 
+.espaceNav {
+
+    height: 60px;
+}
+
 /* #################################################################################################### 
 Page principale
    #################################################################################################### */
 .imgProfil {
     height: 600px;
+}
+
+/* #################################################################################################### 
+Compétences
+   #################################################################################################### */
+
+.competence {
+    width: 100px;
+    height: 100px;
+    border: solid 1px #392E2C !important;
+    transition-duration: 0.5s;
+}
+
+.competence:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.competenceDark {
+    width: 100px;
+    height: 100px;
+    border: solid 1px #FAF2EA !important;
+    transition-duration: 0.5s;
+}
+
+.competenceDark:hover {
+    transform: scale(1.1, 1.1);
 }

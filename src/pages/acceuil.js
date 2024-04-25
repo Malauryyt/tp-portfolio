@@ -3,6 +3,7 @@ import NavBar from "../components/navbar.js";
 import ImageProfil from "../components/image.js";
 import { Titre, TitreEnd, Paragraphe, Liste } from "../components/paragraphe.js";
 import CardB from "../components/card.js";
+import Competences from "../components/competence.js";
 
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -48,8 +49,8 @@ export function ApiPage() {
 
 
                 </div>
-                <div class="blocs container-lg">
-                    <Titre titre="Expérience" mode={lightmode} fctMode={changeMode} />
+                <div className={lightmode == "on" ? "blocs container-lg" : "blocsDark container-lg"}>
+                    <Titre titre="Expériences" mode={lightmode} fctMode={changeMode} />
 
                     <div class="d-flex flex-row-reverse paragraphe">
                         {exp.map((element) => {
@@ -63,14 +64,8 @@ export function ApiPage() {
 
 
                 </div>
-                <div class="blocs container-lg">
-                    <TitreEnd titre="Compétences" mode={lightmode} fctMode={changeMode} />
-                    <div class="d-flex flex-row mb-3">
+                <Competences tab={getComp()} mode={lightmode} fctMode={changeMode} />
 
-
-
-                    </div>
-                </div>
 
 
             </header>
@@ -129,5 +124,20 @@ function getExp() {
         ["Juin-septembre 2022", "Explorateur en Chef et Maître de l'Évasion", text],
         ["septembre 2022 - ?? ", "Expert en Domination et en Subversion Psychologique", exp3],
     ]
+}
+
+function getComp() {
+
+    return (
+        [
+            ['fa-solid fa-poo', 'Crotteur expert '],
+            ['fa-solid fa-face-smile', 'Amadoueur'],
+            ['fa-solid fa-user-secret', " Espion. Se cache dans l'ombre afin de mieux observer et agir."],
+            ["fa-solid fa-hand-holding-heart", "Calins infinis"],
+            ["fa-solid fa-clock", "Horloge interne"],
+            ["fa-solid fa-masks-theater", "acteur"],
+        ]
+
+    )
 }
 

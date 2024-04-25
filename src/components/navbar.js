@@ -14,7 +14,7 @@ function NavBar(props) {
 
 
     return (<>
-        <nav class={props.mode == "on" ? "navbar navbar-expand-lg  shadow-sm navigation " : "navbar navbar-expand-lg  shadow-sm navigation navigationDark"}>
+        <nav class={props.mode == "on" ? "navbar navbar-expand-lg  shadow-sm navigation fixed-top" : "navbar navbar-expand-lg  shadow-sm navigation navigationDark fixed-top"}>
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
@@ -33,6 +33,9 @@ function NavBar(props) {
                 </div>
             </div>
         </nav >
+        <div class="espaceNav">
+
+        </div>
     </>
     )
 }
