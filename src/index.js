@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { ApiPage } from './pages/acceuil.js';
+import ProjectPage from './pages/project.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -16,6 +17,7 @@ root.render(
         <BrowserRouter>
             <Routes>
                 <Route index element={<ApiPage />} />
+                <Route path="/projects" element={<ProjectPage />} />
             </Routes>
         </BrowserRouter>
     </React.StrictMode>

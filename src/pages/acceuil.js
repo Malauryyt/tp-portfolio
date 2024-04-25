@@ -4,10 +4,13 @@ import ImageProfil from "../components/image.js";
 import { Titre, TitreEnd, Paragraphe, Liste } from "../components/paragraphe.js";
 import CardB from "../components/card.js";
 import Competences from "../components/competence.js";
+import Presentation from '../components/presentation.js';
+import Experience from '../components/experience.js';
 
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import pouf from '../images/surlepouf.JPG'
+import { useSpring, animated } from '@react-spring/web'
 
 
 export function ApiPage() {
@@ -31,44 +34,16 @@ export function ApiPage() {
         }
     };
 
+
     return (
         <div className={lightmode == "on" ? "App" : "App AppDark"}>
-            <header className="App-header">
-                <NavBar mode={lightmode} fctMode={changeMode} />
-                <div className={lightmode == "on" ? "blocs container-lg" : "blocsDark container-lg"}>
-                    <div class="row">
-                        <div class="col">
-                            <ImageProfil url={url} />
-                        </div>
-                        <div class="col">
-                            <Titre titre={nom} mode={lightmode} fctMode={changeMode} />
-                            <Paragraphe text={paragraphe} mode={lightmode} fctMode={changeMode} />
-                            <Liste tab={liste} mode={lightmode} fctMode={changeMode} />
-                        </div>
-                    </div>
 
+            <NavBar mode={lightmode} fctMode={changeMode} />
 
-                </div>
-                <div className={lightmode == "on" ? "blocs container-lg" : "blocsDark container-lg"}>
-                    <Titre titre="Expériences" mode={lightmode} fctMode={changeMode} />
+            <Presentation mode={lightmode} fctMode={changeMode} nom={nom} url={url} paragraphe={paragraphe} liste={liste} />
+            <Experience mode={lightmode} fctMode={changeMode} exp={exp} />
+            <Competences tab={getComp()} mode={lightmode} fctMode={changeMode} />
 
-                    <div class="d-flex flex-row-reverse paragraphe">
-                        {exp.map((element) => {
-                            return (
-                                <div>
-                                    <CardB mode={lightmode} fctMode={changeMode} exp={element[1]} desc={element[2]} annee={element[0]} />
-                                </div>
-                            )
-                        })}
-                    </div>
-
-
-                </div>
-                <Competences tab={getComp()} mode={lightmode} fctMode={changeMode} />
-
-
-
-            </header>
         </div>
     );
 }
@@ -83,7 +58,7 @@ function getPresentation() {
     return (
         `Bonjour tout le monde! Je m'appelle Zazou, et je suis le lapin le plus mignon et espiègle que vous rencontrerez jamais !
         
-        Je suis bien plus qu'un simple lapin. Je suis une boule de joie, de câlins et de folie. Avec moi, chaque jour est une aventure remplie de rires et d'amour.Alors, pourquoi ne pas m'ajouter à votre vie pour un peu plus de bonheur et de chaos bienvenu ?
+        Je suis bien plus qu'un simple lapin. Je suis une boule de joie, de câlins et de folie. Avec moi, chaque jour est une aventure remplie de rires et d'amour. Alors, pourquoi ne pas m'ajouter à votre vie pour un peu plus de bonheur et de chaos bienvenu ?
         `
     )
 }
@@ -136,6 +111,7 @@ function getComp() {
             ["fa-solid fa-hand-holding-heart", "Calins infinis"],
             ["fa-solid fa-clock", "Horloge interne"],
             ["fa-solid fa-masks-theater", "acteur"],
+
         ]
 
     )

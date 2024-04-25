@@ -13,7 +13,7 @@ export function Competences(props) {
     return (<>
         <div className={props.mode == "on" ? "blocs container-lg" : "blocsDark container-lg"} >
             <TitreEnd titre="Compétences" mode={props.mode} fctMode={props.fctMode} />
-            <div class="d-flex flex-row mb-3 paragraphe">
+            <div class="d-flex flex-row mb-3 justify-content-center paragraphe">
 
                 {tab.map((element, cpt) => {
 
