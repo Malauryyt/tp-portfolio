@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from "../components/navbar.js";
 import ImageProfil from "../components/image.js";
-import { Titre, Paragraphe, Liste } from "../components/paragraphe.js";
+import { Titre, TitreEnd, Paragraphe, Liste } from "../components/paragraphe.js";
 import CardB from "../components/card.js";
 
 import ReactDOM from 'react-dom'
@@ -17,38 +17,59 @@ export function ApiPage() {
     const liste = getListePres();
     const exp = getExp();
 
+    const [lightmode, setLightmode] = useState('on');
+    useEffect(() => { sessionStorage.setItem("mode", "light"); })
+    const changeMode = () => {
+        if (lightmode == "on") {
+            setLightmode("off");
+            sessionStorage.setItem("mode", "dark");
+        }
+        else {
+            setLightmode("on");
+            sessionStorage.setItem("mode", "light");
+        }
+    };
+
     return (
-        <div className="App">
+        <div className={lightmode == "on" ? "App" : "App AppDark"}>
             <header className="App-header">
-                <NavBar />
-                <div class="blocs container-lg">
+                <NavBar mode={lightmode} fctMode={changeMode} />
+                <div className={lightmode == "on" ? "blocs container-lg" : "blocsDark container-lg"}>
                     <div class="row">
                         <div class="col">
                             <ImageProfil url={url} />
                         </div>
                         <div class="col">
-                            <Titre titre={nom} />
-                            <Paragraphe text={paragraphe} />
-                            <Liste tab={liste} />
+                            <Titre titre={nom} mode={lightmode} fctMode={changeMode} />
+                            <Paragraphe text={paragraphe} mode={lightmode} fctMode={changeMode} />
+                            <Liste tab={liste} mode={lightmode} fctMode={changeMode} />
                         </div>
                     </div>
 
 
                 </div>
                 <div class="blocs container-lg">
-                    <Titre titre="Expérience" />
+                    <Titre titre="Expérience" mode={lightmode} fctMode={changeMode} />
 
                     <div class="d-flex flex-row-reverse paragraphe">
                         {exp.map((element) => {
                             return (
                                 <div>
-                                    <CardB exp={element[1]} desc={element[2]} annee={element[0]} />
+                                    <CardB mode={lightmode} fctMode={changeMode} exp={element[1]} desc={element[2]} annee={element[0]} />
                                 </div>
                             )
                         })}
                     </div>
 
 
+                </div>
+                <div class="blocs container-lg">
+                    <TitreEnd titre="Compétences" mode={lightmode} fctMode={changeMode} />
+                    <div class="d-flex flex-row mb-3">
+
+
+
+                    </div>
                 </div>
 
 
@@ -76,8 +97,9 @@ function getListePres() {
     return [
         ["Âge", "3 ans"],
         ["Passions", "Manger des bananes et dormir"],
-        ["Aliment préféré", "Les bananes, je pourrais en manger toute la journée!"],
+        ["Aliment préféré", "Les bananes, je pourrais en manger toute la journée !"],
         ["Qualité", "Très investie, perséverant"],
+        ["Musique", "https://suno.com/song/32024741-f372-4ae1-bd2f-65d87c932665"],
     ]
 }
 

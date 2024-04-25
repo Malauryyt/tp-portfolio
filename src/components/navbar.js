@@ -3,32 +3,18 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-function NavBar() {
+function NavBar(props) {
 
     const navItems = [
         ["Home", "/"],
-        ["About", "/about"],
         ["Projects", "/projects"],
         ["Contact", "/contact"]
     ]
 
-    const [lightmode, setLightmode] = useState('on');
-
-    useEffect(() => { sessionStorage.setItem("mode", "light"); })
-    const changeMode = () => {
-        if (lightmode == "on") {
-            setLightmode("off");
-            sessionStorage.setItem("mode", "dark");
-        }
-        else {
-            setLightmode("on");
-            sessionStorage.setItem("mode", "light");
-        }
-    };
 
 
     return (<>
-        <nav class="navbar navbar-expand-lg  shadow-sm navigation">
+        <nav class={props.mode == "on" ? "navbar navbar-expand-lg  shadow-sm navigation " : "navbar navbar-expand-lg  shadow-sm navigation navigationDark"}>
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
@@ -41,11 +27,12 @@ function NavBar() {
                         })}
                     </ul>
                     <form class="d-flex" role="search">
-                        <FontAwesomeIcon icon={lightmode == "on" ? "fa-solid fa-sun" : "fa-solid fa-moon"} size="xl" onClick={() => { changeMode() }} />
+                        <FontAwesomeIcon icon={props.mode == "on" ? "fa-solid fa-moon" : " fa-solid fa-sun"} style={props.mode == "on" ? { color: "#000000", } : { color: "#FAF2EA", }} size="xl" onClick={() => { props.fctMode() }} />
+
                     </form>
                 </div>
             </div>
-        </nav>
+        </nav >
     </>
     )
 }

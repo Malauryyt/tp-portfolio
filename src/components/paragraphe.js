@@ -6,7 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export function Titre(props) {
 
     return (<>
-        <div class="pTitre"> <h1 class="titre" >{props.titre} </h1></div>
+        <div class="pTitre" > <h1 className={props.mode == "on" ? "titre" : "titreDark"} >{props.titre} </h1></div>
+    </>)
+
+}
+export function TitreEnd(props) {
+
+    return (<>
+        <div class="pTitre text-end" > <h1 className={props.mode == "on" ? "titre" : "titreDark"} >{props.titre} </h1></div>
     </>)
 
 }
@@ -14,7 +21,7 @@ export function Titre(props) {
 export function Paragraphe(props) {
 
     return (<>
-        <div class="paragraphe"> {props.text} </div>
+        <div className={props.mode == "on" ? "paragraphe" : "paragrapheDark"}> {props.text} </div>
     </>)
 
 }
@@ -24,12 +31,12 @@ export function Liste(props) {
     const liste = props.tab;
 
     return (
-        <ul class="list-group listeGroup rounded-0">
+        <ul className={props.mode == "on" ? "list-group listeGroup rounded-0" : "list-group listeGroupDark rounded-0"}>
             {liste.map((element) => {
 
                 return (
                     < li class="nav - item m-1" >
-                        <li class=""><span class="listeTitre">{element[0]} :</span> {element[1]}</li>
+                        <li class=""><span className={props.mode == "on" ? "listeTitre" : "listeTitreDark"} >{element[0]} :</span> {element[1]}</li>
                     </li >
                 )
             })}
@@ -38,4 +45,4 @@ export function Liste(props) {
     )
 }
 
-export default { Titre, Paragraphe, Liste }
+export default { Titre, Paragraphe, Liste, TitreEnd }

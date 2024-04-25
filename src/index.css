@@ -1,5 +1,9 @@
 body {
-    background-color: rgb(250, 242, 234);
+    background-color: rgb(250, 242, 234) !important;
+}
+
+.AppDark {
+    background-color: rgb(179, 145, 136) !important;
 }
 
 code {
@@ -7,21 +11,41 @@ code {
         monospace;
 }
 
+
+
 .blocs {
     margin-top: 60px !important;
     padding-bottom: 60px !important;
     border-bottom: solid 1px #B39188 !important;
 }
 
+.blocsDark {
+    margin-top: 60px !important;
+    padding-bottom: 60px !important;
+    border-bottom: solid 1px #FAF2EA !important;
+}
+
 .titre {
 
-    color: #B39188;
+    color: #B39188 !important;
+    margin: 10px;
+}
+
+.titreDark {
+
+    color: #FAF2EA !important;
     margin: 10px;
 }
 
 .paragraphe {
     white-space: pre-line;
     margin-top: 60px;
+}
+
+.paragrapheDark {
+    white-space: pre-line;
+    margin-top: 60px;
+    color: #FAF2EA;
 }
 
 .listeGroup {
@@ -31,13 +55,37 @@ code {
     border-top: solid 1px #FFAE9D;
 }
 
+.listeGroupDark {
+    margin-top: 60px;
+    padding: 30px;
+    border-top-width: 30px;
+    border-top: solid 1px #392E2C;
+    color: #FAF2EA;
+}
+
 .listeTitre {
     color: #FFAE9D;
+}
+
+.listeTitreDark {
+    color: #392E2C;
 }
 
 .cardPerso {
     height: 600px !important;
     width: 400px !important;
+    background-color: rgb(204, 174, 164) !important;
+}
+
+.cardPersoDark {
+    height: 600px !important;
+    width: 400px !important;
+    background-color: rgb(204, 174, 164) !important;
+}
+
+.cardPersoDark h5 {
+    color: #FAF2EA;
+
 }
 
 .stylePara {
@@ -46,6 +94,20 @@ code {
     white-space: pre-line;
 }
 
+.styleParaDark {
+    border-left: solid 1px #392E2C;
+    padding-left: 10px;
+    white-space: pre-line;
+    color: #392E2C;
+}
+
+.text {
+    color: #392E2C
+}
+
+.textDark {
+    color: #FAF2EA;
+}
 
 /* #################################################################################################### 
 Navigation
@@ -57,6 +119,19 @@ Navigation
 
 .nav a:hover {
     color: rgb(57, 46, 44);
+    text-decoration: underline;
+}
+
+.navigationDark {
+    background-color: #392E2C !important;
+}
+
+.navigationDark .nav a {
+    color: #FAF2EA !important;
+}
+
+.navigationDark .nav a:hover {
+    color: #FAF2EA !important;
     text-decoration: underline;
 }
 
