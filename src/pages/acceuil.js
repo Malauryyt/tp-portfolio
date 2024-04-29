@@ -13,7 +13,7 @@ import pouf from '../images/surlepouf.JPG'
 import { useSpring, animated } from '@react-spring/web'
 
 
-export function ApiPage() {
+export function ApiPage(props) {
 
     const nom = getNom();
     const url = pouf;
@@ -21,28 +21,40 @@ export function ApiPage() {
     const liste = getListePres();
     const exp = getExp();
 
-    const [lightmode, setLightmode] = useState('on');
-    useEffect(() => { sessionStorage.setItem("mode", "light"); })
-    const changeMode = () => {
-        if (lightmode == "on") {
-            setLightmode("off");
-            sessionStorage.setItem("mode", "dark");
-        }
-        else {
-            setLightmode("on");
-            sessionStorage.setItem("mode", "light");
-        }
-    };
-
+    // animation
+    const springs = useSpring({
+        from: { x: 0 },
+        to: { x: 30 },
+        trans: [0, 1, 2],
+    })
+    const test = useSpring({
+        from: { x: 30 },
+        to: { x: 0 },
+        trans: [0, 1, 2],
+    })
 
     return (
-        <div className={lightmode == "on" ? "App" : "App AppDark"}>
+        <div className={props.mode == "on" ? "App" : "App AppDark"}>
 
-            <NavBar mode={lightmode} fctMode={changeMode} />
+            <NavBar mode={props.mode} fctMode={props.fctMode} />
+            <animated.div
+                style={{
+                    ...springs,
+                }}
+            >
+                <Presentation mode={props.mode} fctMode={props.fctMode} nom={nom[0].nom} url={url} paragraphe={paragraphe[0]} liste={liste} />
+            </animated.div>
 
-            <Presentation mode={lightmode} fctMode={changeMode} nom={nom} url={url} paragraphe={paragraphe} liste={liste} />
-            <Experience mode={lightmode} fctMode={changeMode} exp={exp} />
-            <Competences tab={getComp()} mode={lightmode} fctMode={changeMode} />
+            <animated.div
+                style={{
+                    ...test,
+                }}
+            >
+                <Experience mode={props.mode} fctMode={props.fctMode} exp={exp} />
+            </animated.div>
+
+
+            <Competences tab={getComp()} mode={props.mode} fctMode={props.fctMode} />
 
         </div>
     );
@@ -51,25 +63,33 @@ export function ApiPage() {
 // appel api
 
 function getNom() {
-    return "Zazou Lahaye";
+    return (
+        [
+            { nom: "Zazou Lahaye" }
+        ]
+    );
 }
 
 function getPresentation() {
-    return (
-        `Bonjour tout le monde! Je m'appelle Zazou, et je suis le lapin le plus mignon et espiègle que vous rencontrerez jamais !
+    const pres = `Bonjour tout le monde! Je m'appelle Zazou, et je suis le lapin le plus mignon et espiègle que vous rencontrerez jamais !
         
-        Je suis bien plus qu'un simple lapin. Je suis une boule de joie, de câlins et de folie. Avec moi, chaque jour est une aventure remplie de rires et d'amour. Alors, pourquoi ne pas m'ajouter à votre vie pour un peu plus de bonheur et de chaos bienvenu ?
-        `
+    Je suis bien plus qu'un simple lapin. Je suis une boule de joie, de câlins et de folie. Avec moi, chaque jour est une aventure remplie de rires et d'amour. Alors, pourquoi ne pas m'ajouter à votre vie pour un peu plus de bonheur et de chaos bienvenu ?
+    `
+    return (
+        [
+            { pres: pres }
+        ]
     )
 }
 
 function getListePres() {
+    //{"Âge", k: "3 ans"}
     return [
-        ["Âge", "3 ans"],
-        ["Passions", "Manger des bananes et dormir"],
-        ["Aliment préféré", "Les bananes, je pourrais en manger toute la journée !"],
-        ["Qualité", "Très investie, perséverant"],
-        ["Musique", "https://suno.com/song/32024741-f372-4ae1-bd2f-65d87c932665"],
+        { titre: "Âge", desc: "3 ans" },
+        { titre: "Passions", desc: "Manger des bananes et dormir" },
+        { titre: "Aliment préféré", desc: "Les bananes, je pourrais en manger toute la journée !" },
+        { titre: "Qualité", desc: "Très investie, perséverant" },
+        { titre: "Musique", desc: "https://suno.com/song/32024741-f372-4ae1-bd2f-65d87c932665" },
     ]
 }
 
@@ -95,9 +115,11 @@ function getExp() {
     Instauration d'un Règne de Terreur: 
     Par mes actions impitoyables, j'ai étendu mon pouvoir et ma domination sur l'ensemble du foyer, terrorisant non seulement mes compagnons de maison, mais aussi mon propre père, instaurant un climat de peur et de soumission, même dans les ténèbres de la nuit.`
     return [
-        ["Octobre 2021 - juin 2022", "Architecte de la Déconstruction et Maître de la Subversion", exp2],
-        ["Juin-septembre 2022", "Explorateur en Chef et Maître de l'Évasion", text],
-        ["septembre 2022 - ?? ", "Expert en Domination et en Subversion Psychologique", exp3],
+        { date: "septembre 2022 - ?? ", titre: "Expert en Domination et en Subversion Psychologique", desc: exp3 },
+        { date: "Juin 2022 - septembre 2022", titre: "Explorateur en Chef et Maître de l'Évasion", desc: text },
+        { date: "Octobre 2021 - juin 2022", titre: "Architecte de la Déconstruction et Maître de la Subversion", desc: exp2 },
+
+
     ]
 }
 
@@ -107,10 +129,11 @@ function getComp() {
         [
             ['fa-solid fa-poo', 'Crotteur expert '],
             ['fa-solid fa-face-smile', 'Amadoueur'],
-            ['fa-solid fa-user-secret', " Espion. Se cache dans l'ombre afin de mieux observer et agir."],
+            ['fa-solid fa-user-secret', " Espion"],
             ["fa-solid fa-hand-holding-heart", "Calins infinis"],
             ["fa-solid fa-clock", "Horloge interne"],
             ["fa-solid fa-masks-theater", "acteur"],
+            ["fa-solid fa-eye", "vision nocturne"]
 
         ]
 

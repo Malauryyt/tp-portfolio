@@ -4,9 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { ApiPage } from './pages/acceuil.js';
-import ProjectPage from './pages/project.js';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Browser from './pages/browser.js';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas);
@@ -14,12 +12,7 @@ library.add(fas);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <Routes>
-                <Route index element={<ApiPage />} />
-                <Route path="/projects" element={<ProjectPage />} />
-            </Routes>
-        </BrowserRouter>
+        <Browser />
     </React.StrictMode>
 );
 

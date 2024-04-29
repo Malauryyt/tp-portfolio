@@ -7,6 +7,9 @@ import Competences from "../components/competence.js";
 
 
 export function Presentation(props) {
+
+    const paragraphe = props.paragraphe;
+    console.log(paragraphe)
     return (
         <div className={props.mode == "on" ? "blocs container-lg" : "blocsDark container-lg"}>
             <div class="row">
@@ -15,7 +18,7 @@ export function Presentation(props) {
                 </div>
                 <div class="col">
                     <Titre titre={props.nom} mode={props.mode} fctMode={props.fctMode} />
-                    <Paragraphe text={props.paragraphe} mode={props.mode} fctMode={props.fctMode} />
+                    <Paragraphe text={paragraphe.pres} mode={props.mode} fctMode={props.fctMode} />
                     <Liste tab={props.liste} mode={props.mode} fctMode={props.fctMode} />
                 </div>
             </div>

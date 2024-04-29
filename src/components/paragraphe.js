@@ -36,7 +36,7 @@ export function Liste(props) {
 
                 return (
                     < li class="nav - item m-1" >
-                        <li class=""><span className={props.mode == "on" ? "listeTitre" : "listeTitreDark"} >{element[0]} :</span> {element[1]}</li>
+                        <li class=""><span className={props.mode == "on" ? "listeTitre" : "listeTitreDark"} >{element.titre} :</span> {element.desc}</li>
                     </li >
                 )
             })}
