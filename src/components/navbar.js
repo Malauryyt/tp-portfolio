@@ -6,9 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 function NavBar(props) {
 
     const navItems = [
-        ["Home", "/"],
-        ["Projects", "/projects"],
-        ["Contact", "/contact"]
+        { page: "Home", redirect: "/" },
+        { page: "Projects", redirect: "/projects" },
+        { page: "Contact", redirect: "/contact" },
+        { page: "Blog", redirect: "/blog" },
+
     ]
 
 
@@ -22,7 +24,7 @@ function NavBar(props) {
                             {navItems.map((element) => {
                                 return (
                                     < li class="nav - item" >
-                                        < a class="nav-link active" href={element[1]} > {element[0]}</a >
+                                        < a class="nav-link active" href={element.redirect} > {element.page}</a >
                                     </li >
                                 )
                             })}
