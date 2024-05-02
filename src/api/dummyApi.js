@@ -67,7 +67,7 @@ export async function addPost(title, id, body) {
 
 export async function updatePost(title, id) {
 
-    fetch('https://dummyjson.com/posts/' + id, {
+    return fetch('https://dummyjson.com/posts/' + id, {
         method: 'PUT', /* or PATCH */
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -84,8 +84,19 @@ export async function updatePost(title, id) {
 
 }
 
+export async function getPostComment(id) {
+
+    /* getting comments of posts id 1 */
+    return fetch('https://dummyjson.com/posts/' + id + '/comments')
+        .then(res => res.json())
+        .then(data => {
+            return data.comments;
+
+        });
+}
 
 
-export default { connexionApi, getPost, deletePost, addPost, updatePost };
+
+export default { connexionApi, getPost, deletePost, addPost, updatePost, getPostComment };
 
 

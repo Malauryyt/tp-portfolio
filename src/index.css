@@ -197,6 +197,17 @@ Compétences
     background-color: rgb(204, 174, 164) !important;
 }
 
+.cardProjectDark {
+    height: 400px !important;
+    width: 400px !important;
+    background-color: rgb(204, 174, 164) !important;
+}
+
+.cardProjectDark h5 {
+    color: #FAF2EA;
+
+}
+
 /* #################################################################################################### 
 Compétences
    #################################################################################################### */

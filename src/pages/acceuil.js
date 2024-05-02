@@ -17,9 +17,11 @@ export function ApiPage(props) {
 
     const nom = getNom();
     const url = pouf;
-    const paragraphe = getPresentation();
+
+    const paragraphe = getPresentation(props.langue);
     const liste = getListePres();
     const exp = getExp();
+
 
     // animation
     const springs = useSpring({
@@ -36,7 +38,7 @@ export function ApiPage(props) {
     return (
         <div className={props.mode == "on" ? "App" : "App AppDark"}>
 
-            <NavBar mode={props.mode} fctMode={props.fctMode} />
+            <NavBar mode={props.mode} fctMode={props.fctMode} langue={props.langue} fctLangue={props.fctLangue} />
             <animated.div
                 style={{
                     ...springs,
@@ -70,11 +72,22 @@ function getNom() {
     );
 }
 
-function getPresentation() {
-    const pres = `Bonjour tout le monde! Je m'appelle Zazou, et je suis le lapin le plus mignon et espiègle que vous rencontrerez jamais !
+function getPresentation(langue) {
+
+    let pres = "";
+
+    if (langue == "eng") {
+        pres = `Hello, everyone! My name is Zazou, and I'm the cutest, most mischievous rabbit you'll ever meet!
         
-    Je suis bien plus qu'un simple lapin. Je suis une boule de joie, de câlins et de folie. Avec moi, chaque jour est une aventure remplie de rires et d'amour. Alors, pourquoi ne pas m'ajouter à votre vie pour un peu plus de bonheur et de chaos bienvenu ?
-    `
+        I'm much more than just a bunny. I'm a ball of joy, cuddles and madness. With me, every day is an adventure filled with laughter and love. So why not add me to your life for a little more happiness and welcome chaos?`
+    }
+    else {
+        pres = `Bonjour tout le monde! Je m'appelle Zazou, et je suis le lapin le plus mignon et espiègle que vous rencontrerez jamais !
+        
+        Je suis bien plus qu'un simple lapin. Je suis une boule de joie, de câlins et de folie. Avec moi, chaque jour est une aventure remplie de rires et d'amour. Alors, pourquoi ne pas m'ajouter à votre vie pour un peu plus de bonheur et de chaos bienvenu ?
+        `
+    }
+
     return (
         [
             { pres: pres }

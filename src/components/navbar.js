@@ -30,7 +30,8 @@ function NavBar(props) {
                             })}
                         </ul>
                         <form class="d-flex" role="search">
-                            <FontAwesomeIcon icon={props.mode == "on" ? "fa-solid fa-moon" : " fa-solid fa-sun"} style={props.mode == "on" ? { color: "#000000", } : { color: "#FAF2EA", }} size="xl" onClick={() => { props.fctMode() }} />
+                            <FontAwesomeIcon icon={props.langue == "fr" ? "fa-solid fa-flag" : "fa-solid fa-flag-usa"} style={props.mode == "on" ? { color: "#000000", } : { color: "#FAF2EA", }} size="xl" onClick={() => { props.fctLangue() }} className='me-3' />
+                            < FontAwesomeIcon icon={props.mode == "on" ? "fa-solid fa-moon" : " fa-solid fa-sun"} style={props.mode == "on" ? { color: "#000000", } : { color: "#FAF2EA", }} size="xl" onClick={() => { props.fctMode() }} />
 
                         </form>
                     </div>

@@ -20,7 +20,7 @@ export function Projet(props) {
 
                 {projet.map((element, cpt) => {
                     return (
-                        <div className={props.mode == "on" ? "card m-3 cardProject shadow animation" : "card m-3 cardProject shadow"}  >
+                        <div className={props.mode == "on" ? "card m-3 cardProject shadow animation" : "card m-3 cardProjectDark shadow animation"}  >
 
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <h5 class="card-title">{element.titre}</h5>

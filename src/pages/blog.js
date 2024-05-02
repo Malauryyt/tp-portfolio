@@ -32,7 +32,7 @@ export function BlogPage(props) {
     return (<>
         <div className={props.mode == "on" ? "App " : "App AppDark"}>
             <header className="App-header">
-                <NavBar mode={props.mode} fctMode={props.fctMode} />
+                <NavBar mode={props.mode} fctMode={props.fctMode} langue={props.langue} fctLangue={props.fctLangue} />
 
                 <animated.div
                     style={{
