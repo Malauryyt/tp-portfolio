@@ -10,8 +10,6 @@ export function Projet(props) {
 
     const projet = props.project;
 
-
-
     return (<>
         <div className={props.mode == "on" ? "blocs container-lg" : "blocsDark container-lg"}>
             <Titre titre="Projets" mode={props.mode} fctMode={props.fctMode} />

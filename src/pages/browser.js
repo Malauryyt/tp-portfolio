@@ -29,7 +29,7 @@ export default function Browser() {
             sessionStorage.setItem("langue", "eng");
         }
         else {
-            setLightmode("fr");
+            setLangue("fr");
             sessionStorage.setItem("langue", "fr");
         }
     };

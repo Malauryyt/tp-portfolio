@@ -19,8 +19,8 @@ export function ApiPage(props) {
     const url = pouf;
 
     const paragraphe = getPresentation(props.langue);
-    const liste = getListePres();
-    const exp = getExp();
+    const liste = getListePres(props.langue);
+    const exp = getExp(props.langue);
 
 
     // animation
@@ -55,8 +55,7 @@ export function ApiPage(props) {
                 <Experience mode={props.mode} fctMode={props.fctMode} exp={exp} />
             </animated.div>
 
-
-            <Competences tab={getComp()} mode={props.mode} fctMode={props.fctMode} />
+            <Competences tab={getComp(props.langue)} mode={props.mode} fctMode={props.fctMode} />
 
         </div>
     );
@@ -95,61 +94,134 @@ function getPresentation(langue) {
     )
 }
 
-function getListePres() {
+function getListePres(langue) {
     //{"Âge", k: "3 ans"}
-    return [
-        { titre: "Âge", desc: "3 ans" },
-        { titre: "Passions", desc: "Manger des bananes et dormir" },
-        { titre: "Aliment préféré", desc: "Les bananes, je pourrais en manger toute la journée !" },
-        { titre: "Qualité", desc: "Très investie, perséverant" },
-        { titre: "Musique", desc: "https://suno.com/song/32024741-f372-4ae1-bd2f-65d87c932665" },
-    ]
+    if (langue == "eng") {
+        return [
+            { titre: "Age", desc: "3 years" },
+            { titre: "Passions", desc: "Eating bananas and sleeping" },
+            { titre: "Favorite food", desc: "Bananas, I could eat them all day!" },
+            { titre: "Quality", desc: "Very committed, persistent" },
+            { titre: "Music", desc: "https://suno.com/song/32024741-f372-4ae1-bd2f-65d87c932665" },
+        ]
+    }
+    else {
+        return [
+            { titre: "Âge", desc: "3 ans" },
+            { titre: "Passions", desc: "Manger des bananes et dormir" },
+            { titre: "Aliment préféré", desc: "Les bananes, je pourrais en manger toute la journée !" },
+            { titre: "Qualité", desc: "Très investie, perséverant" },
+            { titre: "Musique", desc: "https://suno.com/song/32024741-f372-4ae1-bd2f-65d87c932665" },
+        ]
+    }
+
 }
 
-function getExp() {
-    const text = ` Étude Approfondie de l'Environnement :
-     Ai entrepris une exploration exhaustive et méticuleuse de tous les recoins de la maison familiale et du jardin, démontrant une connaissance inégalée des lieux.
+function getExp(langue) {
 
-    Établissement de Zones de Fuite Stratégiques: 
-    Avec ingéniosité, ai identifié et établi deux zones de fuite principales : la porte d'entrée principale et l'accès au vide sanitaire. Ces zones ont été soigneusement sélectionnées pour leur accessibilité et leur efficacité en cas de nécessité.`
+    let text = "";
+    let exp2 = "";
+    let exp3 = "";
 
-    const exp2 = `Démolition Stratégique: 
-    J'ai orchestré avec ruse et détermination la désintégration calculée du papier peint et des combles, utilisant mes compétences maquiavéliques pour mener à bien cette tâche.
+    if (langue == "eng") {
 
-    Contournement des Barrières Protectrices: 
-    J'ai habilement infiltré et outrepassé toutes les défenses érigées, démontrant une ingéniosité diabolique pour déjouer les obstacles et atteindre mes objectifs.
+        text = ` In-depth study of the environment :
+    Undertook an exhaustive and meticulous exploration of every nook and cranny of the family home and garden, demonstrating unparalleled knowledge of the premises.
 
-    Exploration des Plaisirs Interdits: 
-    J'ai osé explorer les territoires interdits, incluant la savoureuse dégustation du tapis et des câbles électriques, révélant ainsi ma capacité à repousser les limites de l'interdit avec un flair audacieux.`
+   Establishment of Strategic Escape Zones: 
+   With ingenuity, I identified and established two main leakage zones: the main entrance door and the access to the crawl space. These areas were carefully selected for their accessibility and effectiveness in case of need.`
 
-    const exp3 = `Attaque Hybride sur les Infrastructures Internes: 
-    J'ai orchestré une campagne de terreur sans précédent en utilisant des tactiques de guérilla psychologique, comprenant le marquage de territoire par des actes d'une audace sans égale tels que faire pipi sur le tapis et disperser des petites crottes stratégiquement.
+        exp2 = `Strategic Demolition: 
+   I cunningly and purposefully orchestrated the calculated disintegration of the wallpaper and attic space, using my maquiavellian skills to complete the task.
 
-    Instauration d'un Règne de Terreur: 
-    Par mes actions impitoyables, j'ai étendu mon pouvoir et ma domination sur l'ensemble du foyer, terrorisant non seulement mes compagnons de maison, mais aussi mon propre père, instaurant un climat de peur et de soumission, même dans les ténèbres de la nuit.`
-    return [
-        { date: "septembre 2022 - ?? ", titre: "Expert en Domination et en Subversion Psychologique", desc: exp3 },
-        { date: "Juin 2022 - septembre 2022", titre: "Explorateur en Chef et Maître de l'Évasion", desc: text },
-        { date: "Octobre 2021 - juin 2022", titre: "Architecte de la Déconstruction et Maître de la Subversion", desc: exp2 },
+   Bypassing Protective Barriers: 
+   I skillfully infiltrated and bypassed all the defenses erected, demonstrating diabolical ingenuity to outwit obstacles and achieve my goals.
+
+   Exploration of Forbidden Pleasures: 
+   I dared to explore forbidden territories, including the tasty tasting of carpet and electric cables, revealing my ability to push the boundaries of the forbidden with daring flair.`
+
+        exp3 = `Hybrid Attack on Internal Infrastructures: 
+        I orchestrated an unprecedented campaign of terror using guerrilla psychology tactics, including marking territory with acts of unparalleled audacity such as peeing on the carpet and strategically scattering small turds.
+    
+        Establishing a Reign of Terror: 
+        Through my ruthless actions, I extended my power and domination over the entire household, terrorizing not only my housemates, but also my own father, establishing a climate of fear and submission, even in the dark of night.`
+        return [
+            { date: "septembre 2022 - ?? ", titre: "Expert in Domination and Psychological Subversion", desc: exp3 },
+            { date: "Juin 2022 - septembre 2022", titre: "Chief Explorer and Master of Escape", desc: text },
+            { date: "Octobre 2021 - juin 2022", titre: "Architect of Deconstruction and Master of Subversion", desc: exp2 },
 
 
-    ]
-}
+        ]
+    }
+    else {
+        text = ` Étude Approfondie de l'Environnement :
+        Ai entrepris une exploration exhaustive et méticuleuse de tous les recoins de la maison familiale et du jardin, démontrant une connaissance inégalée des lieux.
+   
+       Établissement de Zones de Fuite Stratégiques: 
+       Avec ingéniosité, ai identifié et établi deux zones de fuite principales : la porte d'entrée principale et l'accès au vide sanitaire. Ces zones ont été soigneusement sélectionnées pour leur accessibilité et leur efficacité en cas de nécessité.`
 
-function getComp() {
+        exp2 = `Démolition Stratégique: 
+       J'ai orchestré avec ruse et détermination la désintégration calculée du papier peint et des combles, utilisant mes compétences maquiavéliques pour mener à bien cette tâche.
+   
+       Contournement des Barrières Protectrices: 
+       J'ai habilement infiltré et outrepassé toutes les défenses érigées, démontrant une ingéniosité diabolique pour déjouer les obstacles et atteindre mes objectifs.
+   
+       Exploration des Plaisirs Interdits: 
+       J'ai osé explorer les territoires interdits, incluant la savoureuse dégustation du tapis et des câbles électriques, révélant ainsi ma capacité à repousser les limites de l'interdit avec un flair audacieux.`
 
-    return (
-        [
-            ['fa-solid fa-poo', 'Crotteur expert '],
-            ['fa-solid fa-face-smile', 'Amadoueur'],
-            ['fa-solid fa-user-secret', " Espion"],
-            ["fa-solid fa-hand-holding-heart", "Calins infinis"],
-            ["fa-solid fa-clock", "Horloge interne"],
-            ["fa-solid fa-masks-theater", "acteur"],
-            ["fa-solid fa-eye", "vision nocturne"]
+        exp3 = `Attaque Hybride sur les Infrastructures Internes: 
+       J'ai orchestré une campagne de terreur sans précédent en utilisant des tactiques de guérilla psychologique, comprenant le marquage de territoire par des actes d'une audace sans égale tels que faire pipi sur le tapis et disperser des petites crottes stratégiquement.
+   
+       Instauration d'un Règne de Terreur: 
+       Par mes actions impitoyables, j'ai étendu mon pouvoir et ma domination sur l'ensemble du foyer, terrorisant non seulement mes compagnons de maison, mais aussi mon propre père, instaurant un climat de peur et de soumission, même dans les ténèbres de la nuit.`
+
+        return [
+            { date: "septembre 2022 - ?? ", titre: "Expert en Domination et en Subversion Psychologique", desc: exp3 },
+            { date: "Juin 2022 - septembre 2022", titre: "Explorateur en Chef et Maître de l'Évasion", desc: text },
+            { date: "Octobre 2021 - juin 2022", titre: "Architecte de la Déconstruction et Maître de la Subversion", desc: exp2 },
+
 
         ]
 
-    )
+    }
+
+
+
+
+
+}
+
+function getComp(langue) {
+    if (langue == "eng") {
+        return (
+            [
+                ['fa-solid fa-poo', 'Expert Pooper'],
+                ['fa-solid fa-face-smile', 'Cuddler'],
+                ['fa-solid fa-user-secret', "Spy"],
+                ["fa-solid fa-hand-holding-heart", "Infinite Cuddles"],
+                ["fa-solid fa-clock", "Internal Clock"],
+                ["fa-solid fa-masks-theater", "Actor"],
+                ["fa-solid fa-eye", "Night Vision"]
+
+            ]
+
+        )
+    }
+    else {
+        return (
+            [
+                ['fa-solid fa-poo', 'Crotteur expert '],
+                ['fa-solid fa-face-smile', 'Amadoueur'],
+                ['fa-solid fa-user-secret', " Espion"],
+                ["fa-solid fa-hand-holding-heart", "Calins infinis"],
+                ["fa-solid fa-clock", "Horloge interne"],
+                ["fa-solid fa-masks-theater", "acteur"],
+                ["fa-solid fa-eye", "vision nocturne"]
+
+            ]
+
+        )
+    }
+
 }
 
